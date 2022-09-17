@@ -1,6 +1,6 @@
 namespace ProcessorService.Abstraction;
 
-public class IProcessor
+public interface IProcessor
 {
-    
+    void Process();
 }

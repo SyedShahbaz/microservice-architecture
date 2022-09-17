@@ -1,6 +1,8 @@
 namespace CoordinatorService.Enum;
 
-public class StatusEnum
+public enum StatusEnum
 {
-    
+    Approved,
+    Declined,
+    Pending
 }

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessorService", "ProcessorService\ProcessorService.csproj", "{4A1E1909-1582-4503-A006-B6C248B51FA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessorService", "ProcessorService\ProcessorService.csproj", "{13AE6B29-2DCB-45D1-9EDD-216705A73ACF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A1E1909-1582-4503-A006-B6C248B51FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1E1909-1582-4503-A006-B6C248B51FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A1E1909-1582-4503-A006-B6C248B51FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1E1909-1582-4503-A006-B6C248B51FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13AE6B29-2DCB-45D1-9EDD-216705A73ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13AE6B29-2DCB-45D1-9EDD-216705A73ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13AE6B29-2DCB-45D1-9EDD-216705A73ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13AE6B29-2DCB-45D1-9EDD-216705A73ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

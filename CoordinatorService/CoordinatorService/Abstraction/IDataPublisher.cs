@@ -1,6 +1,6 @@
 using CoordinatorService.Dto;
 
-namespace CoordinatorService.Implementation;
+namespace CoordinatorService.Abstraction;
 
 public interface IDataPublisher
 {
