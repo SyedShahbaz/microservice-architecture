@@ -1,19 +1,18 @@
-using System.Text.Json;
-using CoordinatorService.Abstraction;
 using CoordinatorService.Dto;
 using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using ProcessorService.Abstraction;
 
-namespace CoordinatorService.Implementation;
+namespace ProcessorService.Implementation;
 
-public class DataFetcher : IDataFetcher
+public class DataBasePublisher : IDataBasePublisher
 {
     private const string AuthSecret = "";
     private const string BasePath = "";
     private readonly FirebaseClient _firebaseClient;
-
-    public DataFetcher()
+    
+    public DataBasePublisher()
     {
         IFirebaseConfig firebaseConfig = new FirebaseConfig()
         {
@@ -24,9 +23,8 @@ public class DataFetcher : IDataFetcher
         _firebaseClient = new FirebaseClient(firebaseConfig);
     }
 
-    public ResponseDto? FetchData(string id)
+    public void Publish(OrderDto? order)
     {
-        var data = _firebaseClient.Get("Test/"+id);
-        return JsonSerializer.Deserialize<ResponseDto>(data.Body);
+        _firebaseClient.SetAsync("Test/" + order!.Id , order);
     }
 }

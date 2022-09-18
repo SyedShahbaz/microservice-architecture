@@ -14,11 +14,13 @@ public class OrderController : ControllerBase
 {
     private readonly ILogger<OrderController> _logger;
     private readonly IDataPublisher _dataPublisher;
+    private readonly IDataFetcher _dataFetcher;
 
-    public OrderController(ILogger<OrderController> logger, IDataPublisher dataPublisher)
+    public OrderController(ILogger<OrderController> logger, IDataPublisher dataPublisher, IDataFetcher dataFetcher)
     {
         _logger = logger;
         _dataPublisher = dataPublisher;
+        _dataFetcher = dataFetcher;
     }
 
     [HttpPost(Name = "Request")]
@@ -27,10 +29,11 @@ public class OrderController : ControllerBase
         return Ok(new {id = _dataPublisher.PublishData(requestDto)});
     }
 
-    [HttpGet(Name = "Status")]
+    [Route("Status")]
+    [HttpGet]
     public ResponseDto GetStatus(string id)
     {
-        return new ResponseDto() {Status = "Testing", Id = Guid.Parse(id)};
+        return _dataFetcher.FetchData(id)!;
     }
     
 }

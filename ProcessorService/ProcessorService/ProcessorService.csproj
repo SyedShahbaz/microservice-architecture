@@ -8,7 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FireSharp" Version="2.0.4" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
       <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
     </ItemGroup>
 

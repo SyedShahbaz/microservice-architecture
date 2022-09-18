@@ -11,7 +11,8 @@ public class ContainerBuilder
         var container = new ServiceCollection();
 
         container.AddSingleton<IProcessor, Processor>();
-        container.AddScoped<IMessageConsumer, MessageConsumer>();
+        container.AddSingleton<IMessageConsumer, MessageConsumer>();
+        container.AddSingleton<IDataBasePublisher, DataBasePublisher>();
         
         return container.BuildServiceProvider();
     }

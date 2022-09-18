@@ -1,4 +1,7 @@
 using System.Text;
+using CoordinatorService.Dto;
+using CoordinatorService.Enum;
+using Newtonsoft.Json;
 using ProcessorService.Abstraction;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -9,9 +12,11 @@ public class MessageConsumer : IMessageConsumer, IDisposable
 {
     private readonly EventingBasicConsumer _consumer;
     private readonly IModel _channel;
+    private readonly IDataBasePublisher _dataBasePublisher;
     
-    public MessageConsumer()
+    public MessageConsumer(IDataBasePublisher dataBasePublisher)
     {
+        _dataBasePublisher = dataBasePublisher;
         var factory = new ConnectionFactory
         {
             HostName = "localhost"
@@ -30,14 +35,20 @@ public class MessageConsumer : IMessageConsumer, IDisposable
             var message = Encoding.UTF8.GetString(body);
 
             Console.WriteLine($"Message received: {message}"); 
+            _dataBasePublisher.Publish(ProcessorOrder(message));
         };
 
         _channel.BasicConsume(queue: "orders", autoAck: true, consumer: _consumer);
         Console.ReadKey();
     }
 
-    public void Dispose()
+    private static OrderDto ProcessorOrder(string message)
     {
-        _channel.Dispose();
+        var order = JsonConvert.DeserializeObject<OrderDto>(message);
+        order!.Status =  order.Quantity > 1 ? StatusEnum.Approved.ToString() : StatusEnum.Declined.ToString();
+
+        return order;
     }
+
+    public void Dispose() => _channel.Dispose();
 }
